@@ -41,17 +41,22 @@ def add_article():
         try:
             db.session.add(article)
             db.session.commit()
-            return redirect("/")
+            return redirect("/posts")
         except:
             return "Случилась ошибка"
     else:
         return render_template("add_article.html")
 
 
-@app.route("/user/<string:name>/<int:id>")
-def user(name, id):
-    return "Привет, мразь " + name + " " + str(id)
+@app.route("/posts")
+def posts():
+    articles = Articles.query.order_by(Articles.date).all()
+    return render_template("posts.html", articles=articles)
 
+@app.route("/posts/<int:id>")
+def post_detail(id):
+    article = Articles.query.get(id)
+    return render_template("posts_detail.html", article=article)
 
 if __name__ == "__main__":
     app.run(debug=True)
