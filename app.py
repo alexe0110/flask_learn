@@ -72,6 +72,7 @@ def post_delete(id):
         return "Случилась ошибка при удалении"
     return render_template("posts_detail.html", article=article)
 
+
 @app.route("/posts/<int:id>/update", methods=['POST', 'GET'])
 def post_update(id):
     article = Articles.query.get(id)
@@ -87,6 +88,7 @@ def post_update(id):
             return "Случилась ошибка при редактировании"
     else:
         return render_template("post_update.html", article=article)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
