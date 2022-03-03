@@ -54,6 +54,19 @@ def posts():
     return render_template("posts.html", articles=articles)
 
 
+@app.route("/get_articles")
+def get_articles():
+    articles = Articles.query.all()
+    articles_data = {}
+    for i in articles:
+        articles_data[i.id] = {
+            "Дата": i.date,
+            "Введение": i.intro,
+            "Текст": i.text
+        }
+    return articles_data
+
+
 @app.route("/posts/<int:id>")
 def post_detail(id):
     article = Articles.query.get(id)
