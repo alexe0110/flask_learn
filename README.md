@@ -180,3 +180,10 @@ def posts():
 </div>
 {% endblock %}
 ```
+
+На хероку, чтобы с poetry
+```bash
+heroku buildpacks:add https://github.com/moneymeets/python-poetry-buildpack.git
+heroku buildpacks:add heroku/python
+git push...
+```
