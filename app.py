@@ -1,7 +1,8 @@
-from flask import Flask, render_template, url_for, request, redirect, send_from_directory
+from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import os
+
+import requests
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///blog.db"
@@ -102,6 +103,12 @@ def post_update(id):
             return "Случилась ошибка при редактировании"
     else:
         return render_template("post_update.html", article=article)
+
+
+@app.route("/favicon.ico")
+def favicon():
+    return "favicon.ico"
+
 
 if __name__ == "__main__":
     app.run(debug=True)
