@@ -9,6 +9,7 @@ python = "^3.9"
 requests = "^2.27.1"
 Flask = "^2.0.3"
 Flask-SQLAlchemy = "^2.5.1"
+gunicorn = "^20.1.0"
 
 [tool.poetry.dev-dependencies]
 
