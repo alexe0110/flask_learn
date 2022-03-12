@@ -2,8 +2,6 @@ from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-import requests
-
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///blog.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -105,9 +103,9 @@ def post_update(id):
         return render_template("post_update.html", article=article)
 
 
-@app.route("/favicon.ico")
-def favicon():
-    return "favicon.ico"
+def testing_app():
+    app.config["TESTING"] = True
+    return app
 
 
 if __name__ == "__main__":

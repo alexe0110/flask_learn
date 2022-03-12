@@ -6,3 +6,6 @@ init:
 	$(VENV)/bin/python -m pip install --upgrade pip
 	$(VENV)/bin/python -m pip install poetry
 	$(VENV)/bin/poetry install
+
+test:
+	pytest -s --alluredir=/tmp/allure --clean-alluredir
