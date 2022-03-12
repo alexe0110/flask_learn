@@ -165,7 +165,7 @@ python-versions = "*"
 
 [[package]]
 name = "itsdangerous"
-version = "2.1.0"
+version = "2.1.1"
 description = "Safely pass data to untrusted environments and back."
 category = "main"
 optional = false
@@ -348,8 +348,8 @@ watchdog = ["watchdog"]
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.9"
-content-hash = "ec260a9bee97e2c7e71fd45f17f08021a1116d7815f11ce2a4dfff328fbfbe43"
+python-versions = "3.9.1"
+content-hash = "1e5336eede8a25f1cad261657acd6b1ea491be1c5c07308b69670f354441bb61"
 
 [metadata.files]
 allure-pytest = [
@@ -466,8 +466,8 @@ iniconfig = [
     {file = "iniconfig-1.1.1.tar.gz", hash = "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"},
 ]
 itsdangerous = [
-    {file = "itsdangerous-2.1.0-py3-none-any.whl", hash = "sha256:29285842166554469a56d427addc0843914172343784cb909695fdbe90a3e129"},
-    {file = "itsdangerous-2.1.0.tar.gz", hash = "sha256:d848fcb8bc7d507c4546b448574e8a44fc4ea2ba84ebf8d783290d53e81992f5"},
+    {file = "itsdangerous-2.1.1-py3-none-any.whl", hash = "sha256:935642cd4b987cdbee7210080004033af76306757ff8b4c0a506a4b6e06f02cf"},
+    {file = "itsdangerous-2.1.1.tar.gz", hash = "sha256:7b7d3023cd35d9cb0c1fd91392f8c95c6fa02c59bf8ad64b8849be3401b95afb"},
 ]
 jinja2 = [
     {file = "Jinja2-3.0.3-py3-none-any.whl", hash = "sha256:077ce6014f7b40d03b47d1f1ca4b0fc8328a692bd284016f806ed0eaca390ad8"},
