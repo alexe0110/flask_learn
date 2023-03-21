@@ -5,6 +5,25 @@
 
 Работа с БД, создание там запипей, чтение из нее
 
+
+# Запуск 
+Развернуть окружение
+```
+make init
+```
+
+### Миграции
+
+```
+export DB_HOST=0.0.0.0
+export DB_PORT=5432
+export DB_NAME=blog
+export DB_USER=postgres
+export DB_PASS=postgres
+
+```
+
+
 # Flask
 
 `@app.route('/')`  для отслеживания урл адреса, создает связь между URL-адресом, заданным как аргумент, и функцией

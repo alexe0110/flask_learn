@@ -3,8 +3,8 @@ services:
   db:
     image: "postgres:14-alpine"
     environment:
-      POSTGRES_DB: "shortcuts"
-      POSTGRES_USER: "tbp"
-      POSTGRES_PASSWORD: "mysecretpassword"
+      POSTGRES_DB: "blog"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
     ports:
       - "5432:5432"
