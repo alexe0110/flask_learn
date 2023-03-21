@@ -9,3 +9,6 @@ init:
 
 test:
 	pytest -s --alluredir=/tmp/allure --clean-alluredir
+
+test-cov:
+	pytest --cov=application --cov-report=html
