@@ -14,13 +14,17 @@ make init
 
 ### Миграции
 
-```
-export DB_HOST=0.0.0.0
-export DB_PORT=5432
-export DB_NAME=blog
-export DB_USER=postgres
-export DB_PASS=postgres
+Нужно создать БД `blog` локально
 
+Сравнить текущее состояние в бд и наши модели - сделать ревизию
+```
+.venv/bin/alembic revision --autogenerate -m "DB Creation"
+```
+После этого в `migrations/versions` появятся миграции
+
+Чтобы запустить миграции выполнить команду указав хэш
+```
+alembic upgrade 08fbdbfff985
 ```
 
 
