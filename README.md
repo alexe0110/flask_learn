@@ -12,7 +12,9 @@
 Создать файл `.env` в корне и заполнить данными
 
 ```
-BLOG_DB_URL=postgresql://postgres:postgres@0.0.0.0:5432/blog
+
+[//]: # (BLOG_DB_URL=postgresql://postgres:postgres@0.0.0.0:5432/blog)
+BLOG_DB_URL=postgresql://postgres:postgres@localhost:5432/blog
 ```
 
 ```
@@ -34,6 +36,11 @@ make init
 alembic upgrade 08fbdbfff985
 ```
 
+### Запуск
+
+```bash
+gunicorn --chdir application app:app
+```
 
 # Flask
 
@@ -44,7 +51,7 @@ alembic upgrade 08fbdbfff985
 ```python
 @app.route("/user/<string:name>/<int:id>")
 def user(name, id):
-    return "Привет, мразь " + name + " " + str(id)
+    return "Привет,  " + name + " " + str(id)
 ```
 
 `@app.route("/create-article", methods=['POST', 'GET'])` в аргументе methods указываются методы которые можем принимать

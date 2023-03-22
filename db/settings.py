@@ -44,7 +44,7 @@ class DBSettings(BaseDBSettings):
     application_name = socket.gethostname()
 
     def setup_db(self) -> None:
-        from tables import metadata
+        from db import metadata
 
         engine = self.create_engine()
         metadata.bind = engine
