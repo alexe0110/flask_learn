@@ -7,8 +7,8 @@ import sqlalchemy.orm as so
 from sqlalchemy.engine.url import URL, make_url
 from sqlalchemy.exc import ArgumentError
 from sqlalchemy.orm import sessionmaker
+from settings import Session
 
-Session = sessionmaker()
 
 
 @contextmanager
@@ -24,14 +24,26 @@ def create_session(**kwargs: Any) -> Iterator[so.Session]:
         new_session.close()
 
 
-class SAUrl(URL):
-    @classmethod
-    def __get_validators__(cls):  # type: ignore
-        yield cls.validate
 
-    @classmethod
-    def validate(cls, v: str) -> URL:
-        try:
-            return make_url(v)
-        except ArgumentError as e:
-            raise ValueError from e
+
+
+if __name__=="__main__":
+    from settings import DatabaseSettings
+    from tables import Articles
+
+    kek=Articles(
+            id=11,
+            title='qwe',
+            intro='asd',
+            text='zxc',
+            date='2023-03-21'
+        )
+
+    DatabaseSettings().setup_db()
+    with create_session() as session:
+        a=session.query(Articles).count()
+        # a=session.query(Articles).all()
+        print(a)
+        # for i in a:
+        #     print(i)
+        # session.add(kek)

@@ -4,8 +4,25 @@ from typing import Any
 from pydantic import BaseSettings
 from sqlalchemy import engine_from_config
 from sqlalchemy.engine import Engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import Mapper, Query
+from base import get_query_cls
+from sqlalchemy.engine.url import URL, make_url
+from sqlalchemy.exc import ArgumentError
 
-from db.utils import SAUrl
+Session = sessionmaker(query_cls=get_query_cls)
+
+class SAUrl(URL):
+    @classmethod
+    def __get_validators__(cls):  # type: ignore
+        yield cls.validate
+
+    @classmethod
+    def validate(cls, v: str) -> URL:
+        try:
+            return make_url(v)
+        except ArgumentError as e:
+            raise ValueError from e
 
 
 class BaseDBSettings(BaseSettings):
@@ -44,10 +61,11 @@ class DatabaseSettings(BaseDBSettings):
     application_name = socket.gethostname()
 
     def setup_db(self) -> None:
-        from db import metadata
+        from tables import metadata
 
         engine = self.create_engine()
         metadata.bind = engine
+        Session.configure(bind=engine)
 
     class Config:
         env_prefix = "BLOG_DB_"
