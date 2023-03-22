@@ -4,9 +4,6 @@ from contextlib import contextmanager
 from typing import Any, Iterator
 
 import sqlalchemy.orm as so
-from sqlalchemy.engine.url import URL, make_url
-from sqlalchemy.exc import ArgumentError
-from sqlalchemy.orm import sessionmaker
 from settings import Session
 
 
@@ -28,7 +25,7 @@ def create_session(**kwargs: Any) -> Iterator[so.Session]:
 
 
 if __name__=="__main__":
-    from settings import DatabaseSettings
+    from settings import DBSettings
     from tables import Articles
 
     kek=Articles(
@@ -39,7 +36,7 @@ if __name__=="__main__":
             date='2023-03-21'
         )
 
-    DatabaseSettings().setup_db()
+    DBSettings().setup_db()
     with create_session() as session:
         a=session.query(Articles).count()
         # a=session.query(Articles).all()

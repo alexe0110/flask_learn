@@ -5,28 +5,11 @@ from pydantic import BaseSettings
 from sqlalchemy import engine_from_config
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm import Mapper, Query
-from base import get_query_cls
-from sqlalchemy.engine.url import URL, make_url
-from sqlalchemy.exc import ArgumentError
 
-Session = sessionmaker(query_cls=get_query_cls)
-
-class SAUrl(URL):
-    @classmethod
-    def __get_validators__(cls):  # type: ignore
-        yield cls.validate
-
-    @classmethod
-    def validate(cls, v: str) -> URL:
-        try:
-            return make_url(v)
-        except ArgumentError as e:
-            raise ValueError from e
-
+Session = sessionmaker()
 
 class BaseDBSettings(BaseSettings):
-    url: SAUrl
+    url: str
     pool_recycle: int = 1
     pool_size: int = 1
     echo: bool
@@ -56,7 +39,7 @@ class BaseDBSettings(BaseSettings):
         return engine_from_config(config, prefix="")
 
 
-class DatabaseSettings(BaseDBSettings):
+class DBSettings(BaseDBSettings):
     echo: bool = True
     application_name = socket.gethostname()
 
