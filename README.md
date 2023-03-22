@@ -5,6 +5,43 @@
 
 Работа с БД, создание там запипей, чтение из нее
 
+
+# Запуск 
+Развернуть окружение
+
+Создать файл `.env` в корне и заполнить данными
+
+```
+
+[//]: # (BLOG_DB_URL=postgresql://postgres:postgres@0.0.0.0:5432/blog)
+BLOG_DB_URL=postgresql://postgres:postgres@localhost:5432/blog
+```
+
+```
+make init
+```
+
+### Миграции
+
+Нужно создать БД `blog` локально
+
+Сравнить текущее состояние в бд и наши модели - сделать ревизию
+```
+.venv/bin/alembic revision --autogenerate -m "DB Creation"
+```
+После этого в `migrations/versions` появятся миграции
+
+Чтобы запустить миграции выполнить команду указав хэш
+```
+alembic upgrade 08fbdbfff985
+```
+
+### Запуск
+
+```bash
+gunicorn --chdir application app:app
+```
+
 # Flask
 
 `@app.route('/')`  для отслеживания урл адреса, создает связь между URL-адресом, заданным как аргумент, и функцией
@@ -14,7 +51,7 @@
 ```python
 @app.route("/user/<string:name>/<int:id>")
 def user(name, id):
-    return "Привет, мразь " + name + " " + str(id)
+    return "Привет,  " + name + " " + str(id)
 ```
 
 `@app.route("/create-article", methods=['POST', 'GET'])` в аргументе methods указываются методы которые можем принимать

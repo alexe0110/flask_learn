@@ -1,5 +1,5 @@
 VENV ?= .venv
-PYTHON_VERSION := 3.9
+PYTHON_VERSION := 3.11
 
 init:
 	python$(PYTHON_VERSION) -m venv $(VENV)
