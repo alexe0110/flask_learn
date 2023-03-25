@@ -5,15 +5,15 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from config import BLOG_DB_URL
 from db.tables import metadata
+import os
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 
 section = config.config_ini_section
-config.set_section_option(section, "BLOG_DB_URL", BLOG_DB_URL)
+config.set_section_option(section, "BLOG_DB_URL", os.environ.get("BLOG_DB_URL"))
 
 
 # Interpret the config file for Python logging.
