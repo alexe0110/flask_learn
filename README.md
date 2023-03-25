@@ -14,7 +14,7 @@
 ```
 
 [//]: # (BLOG_DB_URL=postgresql://postgres:postgres@0.0.0.0:5432/blog)
-BLOG_DB_URL=postgresql://postgres:postgres@localhost:5432/blog
+export BLOG_DB_URL=postgresql://postgres:postgres@localhost:5432/blog
 ```
 
 ```
