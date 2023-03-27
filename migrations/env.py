@@ -5,8 +5,8 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from config import BLOG_DB_URL
 from db.tables import metadata
+BLOG_DB_URL = "postgresql://user:mysecretpassword@0.0.0.0:5433/blog"
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

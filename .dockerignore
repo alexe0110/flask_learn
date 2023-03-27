@@ -1,0 +1,11 @@
+*.pyc
+__pycache__
+.git
+.env
+.venv
+.mypy_cache
+.pytest_cache
+**/__pycache__
+**/*.pyc
+allure-results
+.history

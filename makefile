@@ -12,3 +12,8 @@ test:
 
 test-cov:
 	pytest --cov=application --cov-report=html
+
+run:
+	docker-compose build
+	docker-compose up -d
+	$(VENV)/bin/alembic upgrade head

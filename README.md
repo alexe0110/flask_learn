@@ -6,25 +6,34 @@
 Работа с БД, создание там запипей, чтение из нее
 
 
-# Запуск 
+## Локальный запуск 
 Развернуть окружение
+Создать БД
 
-Создать файл `.env` в корне и заполнить данными
-
+Определить энв со строкой подключения к БД
+```
+BLOG_DB_URL=postgresql://postgres:postgres@0.0.0.0:5432/blog
 ```
 
-[//]: # (BLOG_DB_URL=postgresql://postgres:postgres@0.0.0.0:5432/blog)
-BLOG_DB_URL=postgresql://postgres:postgres@localhost:5432/blog
-```
-
+Создать виртуальное окружение
 ```
 make init
 ```
 
-### Миграции
+Запуск
+```bash
+gunicorn --chdir application app:app
+```
 
-Нужно создать БД `blog` локально
+## Запуск в контейнере 
 
+```bash
+make run
+```
+
+## Миграции
+
+Нужно чтобы в `migrations/env.py:9` была указана актуальная БД
 Сравнить текущее состояние в бд и наши модели - сделать ревизию
 ```
 .venv/bin/alembic revision --autogenerate -m "DB Creation"
@@ -36,11 +45,7 @@ make init
 alembic upgrade 08fbdbfff985
 ```
 
-### Запуск
-
-```bash
-gunicorn --chdir application app:app
-```
+### 
 
 # Flask
 

@@ -7,8 +7,17 @@ services:
       POSTGRES_USER: "user"
       POSTGRES_PASSWORD: "mysecretpassword"
     ports:
-      - "5432:5432"
+      - "5433:5432"
 
+  blog:
+    image: "blog:latest"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      BLOG_DB_URL: "postgresql://user:mysecretpassword@db:5432/blog"
+    ports:
+      - "9999:9999"
 
 networks:
   default:
