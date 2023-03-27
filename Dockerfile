@@ -12,7 +12,6 @@ RUN pip install --no-compile --upgrade pip \
     && rm -rf /tmp/.cache/pypoetry \
     && rm -rf /tmp/bytecode
 
-#RUN alembic upgrade head
 RUN chmod -R a+rwx run.sh
 
 ENTRYPOINT ["./run.sh"]
