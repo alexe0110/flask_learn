@@ -13,12 +13,17 @@
 Определить энв со строкой подключения к БД
 ```
 BLOG_DB_URL=postgresql://postgres:postgres@0.0.0.0:5432/blog
+export BLOG_DB_URL=postgresql://user:mysecretpassword@0.0.0.0:5433/blog
 ```
 
 Создать виртуальное окружение
 ```
 make init
 ```
+
+Запустить БД
+
+    docker-compose up -d db
 
 Запуск
 ```bash
